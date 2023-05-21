@@ -40,8 +40,6 @@ public class ChuController {
         List<HouseHoldMovementAddress> houseHoldMovementAddressList = householdMovementAddressService.getHouseHoldMovementAddressListDesc(houseHold.getHouseHoldNumber());
 
         CertificateIssue certificateIssue = certificateIssueService.registerCertificateIssue(serialNumber, "copy");
-//        String certificateNumber = certificateIssueService.getCertificateNumber(serialNumber, "copy");
-//        LocalDate certificateIssueDate = certificateIssueService.getCertificateIssueDate(serialNumber, "copy");
 
         Resident householdResident = residentService.getResident(houseHold.getResident().getId());
         model.addAttribute("houseHold", houseHold);
