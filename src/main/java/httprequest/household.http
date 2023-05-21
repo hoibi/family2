@@ -1,0 +1,18 @@
+POST /household HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "residentNumber": 1,
+  "compositionDate": "2023-05-14",
+  "compositionReason": "세대분리",
+  "currentAddress": "빵두"
+}
+
+###
+
+DELETE /household/1
+Host: localhost:8080
+Content-Type: application/json
+
+###

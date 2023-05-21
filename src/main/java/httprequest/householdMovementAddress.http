@@ -1,0 +1,27 @@
+POST /household/1/movement HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "movementReportDate": "2023-05-14",
+  "movementAddress": "빵두",
+  "lastAddress": "Y"
+}
+
+
+###
+PUT /household/1/movement/20230514 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "movementAddress": "태훈님 마음속"
+}
+
+
+###
+DELETE /household/1/movement/20230514
+Host: localhost:8080
+Content-Type: application/json
+
+###

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <p>사망신고서</p>
+  <p>(신고일 <span th:text="${birthDeathReport.ReportDate}"></span>)</p>
+  <p>성명 <span th:text="${resident.name}"></span> 주민등록번호 <span th:text="${resident.registrationNumber}"></span></p>
+  <p>사망일시 <span th:text="${strDeathDate}"></span></p>
+  <p>사망장소 구분 <span th:text="${resident.DeathPlaceCode}"></span></p>
+  <p>사망장소 주소 <span th:text="${resident.DeathPlaceAddress}"></span></p>
+  <p>성명 <span th:text="${birthDeathReport.ReportResident.name}"></span> 주민등록번호 <span th:text="${birthDeathReport.ReportResident.registrationNumber}"></span></p>
+  <p>자격 <span th:text="${birthDeathReport.DeathQualificationCode}"></span></p>
+  <p>이메일 <span th:text="${birthDeathReport.Email}"></span> 전화번호 <span th:text="${birthDeathReport.PhoneNumber}"></span></p>
+
+</body>
+</html>

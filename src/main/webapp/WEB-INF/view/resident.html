@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table>
+      <thead>
+        <th>이름</th>
+        <th>가족관계증명서</th>
+        <th>주민등록본</th>
+        <th>출생신고서</th>
+        <th>사망신고서</th>
+      </thead>
+        <tbody>
+            <tr th:each="resident : ${residentList}" >
+                <td th:text="${resident.name}"></td>
+                <td><a th:href="@{'/chu/' + ${resident.id} + '/family'}">출력</a> </td>
+                <td><a th:href="@{'/chu/' + ${resident.id} + '/copy'}">출력</a></td>
+                <td><a th:href="@{'/chu/' + ${resident.id} + '/birth'}">출력</a></td>
+                <td><a th:href="@{'/chu/' + ${resident.id} + '/death'}">출력</a></td>
+                <td><form class th:action="@{/chu/delete(residentNumber=${resident.id})}" method="post">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <button type="submit">삭제</button>
+                </form></td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="page">
+        <a th:href="@{/chu/(page=${residentList.pageable.pageNumber -1} , size=${residentList.pageable.pageSize}  )}" th:if="${residentList.pageable.pageNumber gt 0 }" >이전</a>
+        <span th:text="${residentList.pageable.pageNumber +1}" />/<span th:text="${residentList.totalPages}"/>
+        <a th:href="@{/chu/(page=${residentList.pageable.pageNumber +1} , size=${residentList.pageable.pageSize}  )}" th:if="${residentList.pageable.pageNumber lt residentList.totalPages -1}" >다음</a>
+    </div>
+</body>
+</html>

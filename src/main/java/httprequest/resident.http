@@ -1,0 +1,66 @@
+GET /residents
+Host: localhost:8080
+Content-Type: application/json
+
+###
+
+
+POST /residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "name": "영철",
+  "registrationNumber": "1",
+  "gender" : "남",
+  "birthDate" : "2034-05-11T15:00:00",
+  "birthPlaceCode" : "1",
+  "baseAddress" : "판교 나인트리호텔"
+}
+
+###
+
+POST /residents HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "name": "춘배",
+  "registrationNumber": "1",
+  "gender" : "여",
+  "birthDate" : "2034-05-11T15:00:00",
+  "birthPlaceCode" : "1",
+  "baseAddress" : "판교 나인트리호텔"
+}
+
+###
+
+PUT /residents/9 HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+
+{
+  "name": "영철",
+  "registrationNumber": "1",
+  "gender" : "여",
+  "birthDate" : "2034-05-11T15:00:00",
+  "birthPlaceCode" : "1",
+  "baseAddress" : "판교 나인트리호텔"
+}
+
+###
+#
+#GET /users/nhn
+#Host: localhost:8080
+#Content-Type: application/json
+#
+#
+####
+#
+#PUT /users/nhn
+#Host: localhost:8080
+#Content-Type: application/json
+#
+#{
+#  "password": "hahaha"
+#}

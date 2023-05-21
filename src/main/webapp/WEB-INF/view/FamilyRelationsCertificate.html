@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>가족관계증명서</p>
+    <p>(발급일 : <span th:text="${certificateIssue.certificateIssueDate}"></span>, 증명서 확인번호: <span th:text="${certificateIssue.certificateNumber}"></span>)</p>
+    <p>등록기준지(본적): <span th:text="${resident.getBaseAddress()}"></span></p>
+    <table>
+        <thead>
+            <tr>
+                <th>구분</th>
+                <th>성명</th>
+                <th>출생연월일</th>
+                <th>주민등록번호</th>
+                <th>성별</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>본인</td>
+                <td th:text="${resident.getName()}"></td>
+                <td th:text="${resident.getBirthDate()}"></td>
+                <td th:text="${resident.getRegistrationNumber()}"></td>
+                <td th:text="${resident.getGender()}"></td>
+            </tr>
+            <tr th:each="relation : ${familyRelationshipList}">
+                <td th:text="${relation.getRelationShip()}"></td>
+                <td th:text="${relation.getFamilyResident().getName()}"></td>
+                <td th:text="${relation.getFamilyResident().getBirthDate()}"></td>
+                <td th:text="${relation.getFamilyResident().getRegistrationNumber()}"></td>
+                <td th:text="${relation.getFamilyResident().getGender()}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

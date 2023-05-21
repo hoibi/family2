@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <p>주민등록등본</p>
+    <p>(발급일 : <span th:text="${certificateIssue.certificateIssueDate}"></span>, 증명서 확인번호: <span th:text="${certificateIssue.certificateNumber}"></span>)</p>
+    <p>세대주 성명: <span th:text="${householdResident.getName()}"></span>, 세대구성 사유 및 일자: <span th:text="${houseHold.getCompositionReason()}"></span>, <span th:text="${houseHold.getCompositionDate()}"></span></p>
+    <table>
+        <thead>
+            <th colspan="2">주소</th>
+            <th>신고일</th>
+        </thead>
+        <tbody>
+            <tr th:each="household, stat : ${houseHoldMovementAddressList}">
+                <td th:text="${stat.first ? '현주소' : '전주소'}"></td>
+                <td th:text="${household.movementAddress}"></td>
+                <td th:text="${household.movementAddressPk.movementReportDate}"></td>
+            </tr>
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <th>세대주 관계</th>
+            <th>성명</th>
+            <th>주민등록번호</th>
+            <th>신고일</th>
+            <th>변동사유</th>
+        </thead>
+        <tbody>
+            <tr th:each="composition : ${householdCompositionResidentList}">
+                <td th:text="${composition.relationshipCode}"></td>
+                <td th:text="${composition.resident.name}"></td>
+                <td th:text="${composition.resident.registrationNumber}"></td>
+                <td th:text="${composition.reportDate}"></td>
+                <td th:text="${composition.changeReasonCode}"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+</body>
+</html>
