@@ -35,11 +35,15 @@ public class ChuController {
     @GetMapping("{serialNumber}/copy")
     public String getResidentRegistration(Model model, @PathVariable Integer serialNumber) {
         HouseholdCompositionResident householdCompositionResident = householdCompositionService.getHouseholdCompositionResident(serialNumber);
+        if (householdCompositionResident == null) {
+            return "redirect:/chu";
+        }
         List<HouseholdCompositionResident> householdCompositionResidentList = householdCompositionService.getAllHouseholdCompositionResident(householdCompositionResident.getHouseHold().getHouseHoldNumber());
         HouseHold houseHold = houseHoldService.getHouseHold(householdCompositionResident.getHouseHold().getHouseHoldNumber());
         List<HouseHoldMovementAddress> houseHoldMovementAddressList = householdMovementAddressService.getHouseHoldMovementAddressListDesc(houseHold.getHouseHoldNumber());
 
         CertificateIssue certificateIssue = certificateIssueService.registerCertificateIssue(serialNumber, "copy");
+        String certificationNumber = certificateIssueService.getCertificateNumber(certificateIssue);
 
         Resident householdResident = residentService.getResident(houseHold.getResident().getId());
         model.addAttribute("houseHold", houseHold);
@@ -47,9 +51,7 @@ public class ChuController {
         model.addAttribute("houseHoldMovementAddressList", houseHoldMovementAddressList);
         model.addAttribute("householdCompositionResidentList", householdCompositionResidentList);
         model.addAttribute("certificateIssue", certificateIssue);
-
-//        model.addAttribute("certificateNumber", certificateNumber);
-//        model.addAttribute("certificateIssueDate", certificateIssueDate);
+        model.addAttribute("certificationNumber", certificationNumber);
 
         return "CopyOfResidentRegistration";
     }
@@ -61,7 +63,7 @@ public class ChuController {
         List<FamilyRelationship> familyRelationshipList = familyRelationshipService.getFamilyRelationship(serialNumber);
 
         CertificateIssue certificateIssue = certificateIssueService.registerCertificateIssue(serialNumber, "family");
-
+        String certificationNumber = certificateIssueService.getCertificateNumber(certificateIssue);
 //        CertificateIssue certificateIssue = certificateIssueService.getCertificateIssue(serialNumber, "family");
 //        String certificateNumber = certificateIssueService.getCertificateNumber(serialNumber, "family");
 //        LocalDate certificateIssueDate = certificateIssueService.getCertificateIssueDate(serialNumber, "family");
@@ -71,6 +73,7 @@ public class ChuController {
 //        model.addAttribute("certificateNumber", certificateNumber);
 //        model.addAttribute("certificateIssueDate", certificateIssueDate);
         model.addAttribute("certificateIssue", certificateIssue);
+        model.addAttribute("certificationNumber", certificationNumber);
         return "FamilyRelationsCertificate";
 
     }
@@ -79,6 +82,12 @@ public class ChuController {
     public String getResident(Model model, @PageableDefault(page = 0, size = 4) Pageable pageable) {
         pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize());
         Page<Resident> residentList = residentService.getResidentByPage(pageable);
+//        List<Resident> residentList1 = residentList.getContent();
+//        for (Resident r : residentList1) {
+//            if (r.hasBirthReport()) {
+//                System.out.println("asdad");
+//            }
+//        }
         model.addAttribute("residentList", residentList);
         return "resident";
     }

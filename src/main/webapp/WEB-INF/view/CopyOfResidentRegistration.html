@@ -6,7 +6,7 @@
 </head>
 <body>
     <p>주민등록등본</p>
-    <p>(발급일 : <span th:text="${certificateIssue.certificateIssueDate}"></span>, 증명서 확인번호: <span th:text="${certificateIssue.certificateNumber}"></span>)</p>
+    <p>(발급일 : <span th:text="${certificateIssue.certificateIssueDate}"></span>, 증명서 확인번호: <span th:text="${certificationNumber}"></span>)</p>
     <p>세대주 성명: <span th:text="${householdResident.getName()}"></span>, 세대구성 사유 및 일자: <span th:text="${houseHold.getCompositionReason()}"></span>, <span th:text="${houseHold.getCompositionDate()}"></span></p>
     <table>
         <thead>

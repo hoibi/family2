@@ -1,0 +1,11 @@
+
+^
+java:S1128"BRemove this unused import 'com.nhnacademy.family.entity.Resident'.(À®ƒ@8ÇŸ®À1
+Q
+java:S1128"5Remove this unused import 'javax.persistence.Column'.(ìûæH8¨ß£À1
+V
+java:S1128"9Remove this unused import 'javax.persistence.JoinColumn'.(´Å¼á8Éˆ¤À1
+Z
+java:S1128"8Remove this unused import 'javax.persistence.ManyToOne'.(ÇÑ²øÿÿÿÿ8Éˆ¤À1
+R
+java:S1128	"5Remove this unused import 'javax.persistence.MapsId'.(²Û¢ˆ8Éˆ¤À1

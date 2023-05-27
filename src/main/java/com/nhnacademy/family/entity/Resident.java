@@ -14,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Table(name = "resident")
-public class Resident {
+public class Resident  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "resident_serial_number")
@@ -57,6 +57,8 @@ public class Resident {
     @Column(name = "death_place_address")
     String deathPlaceAddress;
 
+    @OneToMany(mappedBy = "resident", fetch = FetchType.EAGER)
+    List<BirthDeathReport> birthDeathReportList;
 
 
     @Builder
@@ -79,4 +81,32 @@ public class Resident {
                 .baseAddress(residentForm.getBaseAddress())
                 .build();
     }
+
+    public boolean hasBirthReport() {
+
+        boolean hasBirth = false;
+
+        for (BirthDeathReport b : birthDeathReportList) {
+            if(b.getBirthDeathPk().getTypeCode().equals("출생")) {
+                hasBirth = true;
+            }
+        }
+
+        return hasBirth;
+
+
+    }
+
+    public boolean hasDeathReport() {
+        boolean hasDeath = false;
+
+        for (BirthDeathReport b : birthDeathReportList) {
+            if (b.getBirthDeathPk().getTypeCode().equals("사망")) {
+                hasDeath = true;
+            }
+        }
+
+        return hasDeath;
+    }
+
 }

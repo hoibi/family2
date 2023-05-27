@@ -6,7 +6,7 @@
 </head>
 <body>
     <p>가족관계증명서</p>
-    <p>(발급일 : <span th:text="${certificateIssue.certificateIssueDate}"></span>, 증명서 확인번호: <span th:text="${certificateIssue.certificateNumber}"></span>)</p>
+    <p>(발급일 : <span th:text="${certificateIssue.certificateIssueDate}"></span>, 증명서 확인번호: <span th:text="${certificationNumber}"></span>)</p>
     <p>등록기준지(본적): <span th:text="${resident.getBaseAddress()}"></span></p>
     <table>
         <thead>

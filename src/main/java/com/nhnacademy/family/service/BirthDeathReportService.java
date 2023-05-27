@@ -6,6 +6,7 @@ import com.nhnacademy.family.entity.Resident;
 import com.nhnacademy.family.repository.BirthDeathReportRepository;
 import com.nhnacademy.family.repository.ResidentRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,8 @@ import java.util.NoSuchElementException;
 public class BirthDeathReportService {
     private final BirthDeathReportRepository birthDeathReportRepository;
     private final ResidentRepository residentRepository;
+
+//    private final C
 
     @Transactional
     public void registerBirthReport(Integer reportNumber, BirthReportForm birthReportForm) {

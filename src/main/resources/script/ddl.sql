@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS nhn_academy_35;
 use nhn_academy_35;
 -- 1. 기존 테이블 삭제
 drop table if exists household_movement_address;

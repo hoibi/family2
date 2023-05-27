@@ -18,8 +18,10 @@
                 <td th:text="${resident.name}"></td>
                 <td><a th:href="@{'/chu/' + ${resident.id} + '/family'}">출력</a> </td>
                 <td><a th:href="@{'/chu/' + ${resident.id} + '/copy'}">출력</a></td>
-                <td><a th:href="@{'/chu/' + ${resident.id} + '/birth'}">출력</a></td>
-                <td><a th:href="@{'/chu/' + ${resident.id} + '/death'}">출력</a></td>
+                <td th:if="${resident.hasBirthReport()}"><a th:href="@{'/chu/' + ${resident.id} + '/birth'}">출력</a></td>
+                <td th:unless="${resident.hasBirthReport()}">없음</td>
+                <td th:if="${resident.hasDeathReport()}"><a th:href="@{'/chu/' + ${resident.id} + '/death'}">출력</a></td>
+                <td th:unless="${resident.hasDeathReport()}">없음</td>
                 <td><form class th:action="@{/chu/delete(residentNumber=${resident.id})}" method="post">
                     <input type="hidden" name="_method" value="DELETE">
                     <button type="submit">삭제</button>
@@ -32,5 +34,9 @@
         <span th:text="${residentList.pageable.pageNumber +1}" />/<span th:text="${residentList.totalPages}"/>
         <a th:href="@{/chu/(page=${residentList.pageable.pageNumber +1} , size=${residentList.pageable.pageSize}  )}" th:if="${residentList.pageable.pageNumber lt residentList.totalPages -1}" >다음</a>
     </div>
+
+
+    <a href="/logout">로그아웃</a>
+
 </body>
 </html>

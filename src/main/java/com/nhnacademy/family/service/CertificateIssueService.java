@@ -26,6 +26,7 @@ public class CertificateIssueService {
             }
             int randomNum = ((int) (Math.random() * 9) + randomRange);
             confirmationNumber += randomNum;
+
         }
 
         if (certificateType.equals("family")) {
@@ -49,15 +50,15 @@ public class CertificateIssueService {
     public CertificateIssue getCertificateIssue(Integer residentNumber, String certificateType) {
         String certificateTypeCode;
         if (certificateType.equals("family")) {
-            certificateTypeCode = "가족관계 증명서";
+            certificateTypeCode = "가족관계증명서";
         } else {
             certificateTypeCode = "주민등록본";
         }
         return certificateIssueRepository.findByResident_IdAndCertificateType(residentNumber, certificateTypeCode);
     }
 
-    public String getCertificateNumber(Integer residentNumber, String certificateType) {
-        CertificateIssue certificateIssue = getCertificateIssue(residentNumber, certificateType);
+    public String getCertificateNumber(CertificateIssue certificateIssue) {
+//        CertificateIssue certificateIssue = getCertificateIssue(residentNumber, certificateType);
         String confirmationNumber = String.valueOf(certificateIssue.getCertificateNumber());
         String preConfirmationNumber = confirmationNumber.substring(0, 7);
         String subConfirmationNumber = confirmationNumber.substring(8, 15);

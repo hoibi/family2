@@ -11,6 +11,7 @@ import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
@@ -69,5 +70,10 @@ public class WebConfig implements WebMvcConfigurer, ApplicationContextAware {
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
         resolvers.add(new PageableHandlerMethodArgumentResolver());
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.viewResolver(thymeleafViewResolver());
     }
 }
