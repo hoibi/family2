@@ -3,6 +3,7 @@ package com.nhnacademy.family.repository;
 import com.nhnacademy.family.entity.BirthDeathReport;
 import com.nhnacademy.family.entity.QBirthDeathReport;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
+import org.springframework.data.repository.NoRepositoryBean;
 
 
 public class RepositoryImpl extends QuerydslRepositorySupport implements RepositoryCustom {
@@ -14,7 +15,6 @@ public class RepositoryImpl extends QuerydslRepositorySupport implements Reposit
     @Override
     public BirthDeathReport findBirthDeathReportByBirthDeathPk_ResidentNumberAndBirthDeathPk_TypeCode(Integer residentNumber, String typeCode) {
         QBirthDeathReport qBirthDeathReport = QBirthDeathReport.birthDeathReport;
-
 
         return from(qBirthDeathReport)
                 .where(qBirthDeathReport.birthDeathPk.residentNumber.eq(residentNumber))

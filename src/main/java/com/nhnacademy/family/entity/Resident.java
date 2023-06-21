@@ -93,8 +93,6 @@ public class Resident  {
         }
 
         return hasBirth;
-
-
     }
 
     public boolean hasDeathReport() {

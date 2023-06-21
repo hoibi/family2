@@ -6,11 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.query.JpaEntityGraph;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,7 +21,7 @@ import java.util.Objects;
 @Controller
 @RequestMapping("/chu")
 @RequiredArgsConstructor
-public class ChuController {
+public class ViewController {
     private final BirthDeathReportService birthDeathReportService;
     private final FamilyRelationshipService familyRelationshipService;
     private final HouseholdMovementAddressService householdMovementAddressService;
